@@ -1,5 +1,10 @@
 package mx.edu.itlapiedad.dao;
 
-public interface ProductosDAO {
+import java.util.List;
 
+
+import mx.edu.itlapiedad.models.Productos;
+
+public interface ProductosDAO {
+	List<Productos>consultarProductos();
 }
