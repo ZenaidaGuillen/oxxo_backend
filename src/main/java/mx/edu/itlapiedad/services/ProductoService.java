@@ -8,4 +8,6 @@ public interface ProductoService {
 
 	List<Productos> consultarProductos();
 	Productos buscar(int id);
+	Productos insertarProductos(Productos productos);
+
 }

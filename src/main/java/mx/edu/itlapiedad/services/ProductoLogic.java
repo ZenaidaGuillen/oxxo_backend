@@ -23,5 +23,8 @@ public class ProductoLogic implements ProductoService {
 	public Productos buscar(int id) {
 		return repositorio.buscar(id);
 	}
+	public Productos insertarProductos(Productos productos) {
+		return repositorio.insertarProductos(productos);
+	}
 
 }
