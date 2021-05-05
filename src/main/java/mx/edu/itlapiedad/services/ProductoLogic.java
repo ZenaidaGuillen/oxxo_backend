@@ -16,8 +16,12 @@ public class ProductoLogic implements ProductoService {
 	
 	@Override
 	public List<Productos> consultarProductos() {
-		// TODO Auto-generated method stub
 		return repositorio.consultarProductos();
+	}
+
+	@Override
+	public Productos buscar(int id) {
+		return repositorio.buscar(id);
 	}
 
 }
