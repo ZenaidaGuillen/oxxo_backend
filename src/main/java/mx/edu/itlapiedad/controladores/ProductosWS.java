@@ -7,6 +7,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,6 +33,19 @@ public ResponseEntity<?> consultarProductos() {
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 	return new ResponseEntity<List<Productos>>(resultado, HttpStatus.OK);
+	
+}
+
+@PostMapping()
+public ResponseEntity<?>insertarProductos(@RequestBody Productos productos){
+	Productos resultado=null;
+	try {
+		resultado=servicio.insertarProductos(productos);
+	}catch(DataAccessException e) {
+		return new ResponseEntity<>(HttpStatus.CONFLICT);
+	}
+	
+	return new ResponseEntity<Productos>(resultado,HttpStatus.CREATED);
 	
 }
 }

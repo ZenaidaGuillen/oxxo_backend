@@ -7,4 +7,5 @@ import mx.edu.itlapiedad.models.Productos;
 
 public interface ProductosDAO {
 	List<Productos>consultarProductos();
+	Productos insertarProductos(Productos productos);
 }
