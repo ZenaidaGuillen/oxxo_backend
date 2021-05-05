@@ -11,7 +11,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
-
 import mx.edu.itlapiedad.models.Productos;
 
 
@@ -40,6 +39,23 @@ public class ProductosJDBC implements ProductosDAO{
 			
 		});
 	}
+
+	@Override
+	public Productos buscar(int id) {
+		String sql_query = "SELECT * FROM productos WHERE id = ?";
+		return conexion.queryForObject(sql_query, new RowMapper<Productos>() {
+			public Productos mapRow(ResultSet rs, int rowNum) throws SQLException{
+				Productos producto = new Productos();
+				producto.setId(rs.getInt("id"));
+				producto.setDescripcion(rs.getString("descripcion"));
+				producto.setPrecio(rs.getFloat("precio"));
+				producto.setCodigo_barras(rs.getString("codigo_barras"));
+				producto.setExistencia(rs.getInt("existencia"));
+				return producto;
+			}
+		}, id);
+		
+	}
 	
 	@Override
 	public Productos insertarProductos(Productos productos) {
@@ -54,5 +70,18 @@ public class ProductosJDBC implements ProductosDAO{
 		Number id=insert.executeAndReturnKey(datos);
 		productos.setId(id.intValue());
 		return productos;
+	}
+
 }
-}
+
+
+
+
+
+
+
+
+
+
+
+

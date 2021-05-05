@@ -6,6 +6,9 @@ import java.util.List;
 import mx.edu.itlapiedad.models.Productos;
 
 public interface ProductosDAO {
-	List<Productos>consultarProductos();
-	Productos insertarProductos(Productos productos);
+
+	public List<Productos>consultarProductos();
+	public Productos buscar(int id);
+	public Productos insertarProductos(Productos productos);
+
 }
