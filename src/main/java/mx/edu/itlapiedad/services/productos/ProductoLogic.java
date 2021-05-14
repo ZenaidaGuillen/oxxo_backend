@@ -1,11 +1,11 @@
-package mx.edu.itlapiedad.services;
+package mx.edu.itlapiedad.services.productos;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import mx.edu.itlapiedad.dao.ProductosDAO;
+import mx.edu.itlapiedad.dao.productos.ProductosDAO;
 import mx.edu.itlapiedad.models.Productos;
 
 @Service

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import mx.edu.itlapiedad.models.Tickets;
-import mx.edu.itlapiedad.services.TicketService;
+import mx.edu.itlapiedad.services.tickets.TicketService;
 
 @RestController
 @RequestMapping("/api/devops/oxxo/tickets")

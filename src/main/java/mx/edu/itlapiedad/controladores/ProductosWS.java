@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import mx.edu.itlapiedad.models.Productos;
-import mx.edu.itlapiedad.services.ProductoService;
+import mx.edu.itlapiedad.services.productos.ProductoService;
 
 
 
