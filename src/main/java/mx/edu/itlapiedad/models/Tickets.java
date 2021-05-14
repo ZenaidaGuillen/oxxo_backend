@@ -3,9 +3,16 @@ package mx.edu.itlapiedad.models;
 import java.sql.Timestamp;
 
 public class Tickets {
-	private int id, cajero_id;
+	private int id, cajero_id, activo;
 	private float total;
 	private Timestamp fecha_hora;
+	public int getActivo() {
+		return activo;
+	}
+	public void setActivo(int activo) {
+		this.activo = activo;
+	}
+	
 	public int getId() {
 		return id;
 	}

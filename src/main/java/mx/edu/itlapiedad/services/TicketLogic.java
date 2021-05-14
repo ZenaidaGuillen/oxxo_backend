@@ -29,4 +29,17 @@ public class TicketLogic implements TicketService {
 	public Tickets insertarTickets(Tickets tickets) {
 		return repositorio.insertarTickets(tickets);
 	}
+
+	@Override
+	public void eliminarTickets(int id) {
+		// TODO Auto-generated method stub
+		repositorio.eliminarTickets(id);
+		
+	}
+
+	@Override
+	public void actualizarTickets(Tickets tickets) {
+		// TODO Auto-generated method stub
+		repositorio.actualizarTickets(tickets);
+	}
 }

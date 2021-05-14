@@ -23,7 +23,7 @@ public class TicketsJDBC implements TicketsDAO {
 	
 	@Override
 	public List<Tickets> consultarTickets() {
-		String sql_query="SELECT* FROM tickets";
+		String sql_query="SELECT* FROM tickets WHERE activo=1";
 		return conexion.query(sql_query, new RowMapper<Tickets>() {
 
 			@Override
@@ -33,6 +33,7 @@ public class TicketsJDBC implements TicketsDAO {
 				ticket.setFecha_hora(rs.getTimestamp("fecha_hora"));
 				ticket.setTotal(rs.getFloat("total"));
 				ticket.setCajero_id(rs.getInt("cajero_id"));
+				ticket.setActivo(rs.getInt("activo"));
 				
 				return ticket;
 			}
@@ -51,7 +52,7 @@ public class TicketsJDBC implements TicketsDAO {
 				ticket.setFecha_hora(rs.getTimestamp("fecha_hora"));
 				ticket.setTotal(rs.getFloat("total"));
 				ticket.setCajero_id(rs.getInt("cajero_id"));
-			
+				ticket.setActivo(rs.getInt("activo"));
 				return ticket;
 			}
 		}, id);
@@ -61,17 +62,30 @@ public class TicketsJDBC implements TicketsDAO {
 	@Override
 	public Tickets insertarTickets(Tickets tickets) {
 		SimpleJdbcInsert insert=new SimpleJdbcInsert(conexion).withTableName("tickets")
-				.usingColumns("total","CAJERO_id")
+				.usingColumns("total","cajero_id")
 				.usingGeneratedKeyColumns("id");
 		Map<String, Object> datos=new HashMap<>();
 		//datos.put("fecha_hora", tickets.getFecha_hora());
 		datos.put("total", tickets.getTotal());
-		datos.put("CAJERO_id", tickets.getCajero_id());
+		datos.put("cajero_id", tickets.getCajero_id());
 		Number id=insert.executeAndReturnKey(datos);
 		tickets.setId(id.intValue());
+		tickets.setActivo(1);
 		return tickets;
 	}
 
-
+	@Override
+	public void eliminarTickets(int id) {
+		String sql_update="UPDATE tickets SET activo=0 WHERE id = ?";
+		conexion.update(sql_update, id);
+		
+	}
+	
+	@Override
+	public void actualizarTickets(Tickets tickets) {
+		String sql_update="UPDATE tickets SET total = ?, cajero_id = ?  WHERE id = ?";
+		conexion.update(sql_update, tickets.getTotal(), tickets.getCajero_id(), tickets.getId());
+		
+	}
 }
 
