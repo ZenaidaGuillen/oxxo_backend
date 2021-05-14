@@ -1,4 +1,4 @@
-package mx.edu.itlapiedad.dao;
+package mx.edu.itlapiedad.dao.productos;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

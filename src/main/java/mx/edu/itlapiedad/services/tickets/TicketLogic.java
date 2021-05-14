@@ -1,12 +1,11 @@
-package mx.edu.itlapiedad.services;
+package mx.edu.itlapiedad.services.tickets;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-import mx.edu.itlapiedad.dao.TicketsDAO;
+import mx.edu.itlapiedad.dao.tickets.TicketsDAO;
 import mx.edu.itlapiedad.models.Tickets;
 
 
