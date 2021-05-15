@@ -33,7 +33,7 @@ public class TicketsJDBC implements TicketsDAO {
 				ticket.setFecha_hora(rs.getTimestamp("fecha_hora"));
 				ticket.setTotal(rs.getFloat("total"));
 				ticket.setCajero_id(rs.getInt("cajero_id"));
-				ticket.setActivo(rs.getInt("activo"));
+				// ticket.setActivo(rs.getInt("activo"));
 				
 				return ticket;
 			}
@@ -52,7 +52,7 @@ public class TicketsJDBC implements TicketsDAO {
 				ticket.setFecha_hora(rs.getTimestamp("fecha_hora"));
 				ticket.setTotal(rs.getFloat("total"));
 				ticket.setCajero_id(rs.getInt("cajero_id"));
-				ticket.setActivo(rs.getInt("activo"));
+				// ticket.setActivo(rs.getInt("activo"));
 				return ticket;
 			}
 		}, id);
@@ -70,7 +70,7 @@ public class TicketsJDBC implements TicketsDAO {
 		datos.put("cajero_id", tickets.getCajero_id());
 		Number id=insert.executeAndReturnKey(datos);
 		tickets.setId(id.intValue());
-		tickets.setActivo(1);
+		// tickets.setActivo(1);
 		return tickets;
 	}
 
