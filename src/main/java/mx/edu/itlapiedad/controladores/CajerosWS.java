@@ -32,6 +32,7 @@ public class CajerosWS {
 		try {
 			resultado= servicio.consultarCajeros();
 		}catch(DataAccessException e) {
+			System.out.println(e);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<List<Cajeros>>(resultado, HttpStatus.OK);
