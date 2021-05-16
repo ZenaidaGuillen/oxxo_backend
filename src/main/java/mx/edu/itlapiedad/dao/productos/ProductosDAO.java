@@ -10,5 +10,6 @@ public interface ProductosDAO {
 	public List<Productos>consultarProductos();
 	public Productos buscar(int id);
 	public Productos insertarProductos(Productos productos);
-
+	void actualizarProductos(Productos productos);
+	void eliminarProductos(int id);
 }
