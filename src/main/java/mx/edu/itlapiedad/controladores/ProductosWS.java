@@ -20,13 +20,13 @@ import mx.edu.itlapiedad.services.productos.ProductoService;
 
 
 @RestController
-@RequestMapping("/api/devops/oxxo")
+@RequestMapping("/api/devops/oxxo/productos")
 public class ProductosWS {
 
 	@Autowired
 	ProductoService servicio;	
 		
-	@GetMapping("/productos")
+	@GetMapping()
 	public ResponseEntity<?> consultarProductos() {
 		List<Productos>resultado;
 		try {
@@ -38,7 +38,7 @@ public class ProductosWS {
 		
 	}
 
-	@GetMapping("/productos/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<?> buscar(@PathVariable int id){
 		Productos resultado;
 		try {
@@ -57,6 +57,7 @@ public class ProductosWS {
 		try {
 			resultado=servicio.insertarProductos(productos);
 		}catch(DataAccessException e) {
+			System.out.println(e);
 			return new ResponseEntity<>(HttpStatus.CONFLICT);
 		}
 		
@@ -77,11 +78,9 @@ public class ProductosWS {
 		
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
-	@DeleteMapping("/productos/{id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<?>eliminarProductos(@PathVariable int id){
-		
-		//se realiza esto para evaluar cuando un id no se encuentra en la base 
-		// de datos.
+
 		try {
 			servicio.eliminarProductos(id);
 		}catch(DataAccessException e) {
