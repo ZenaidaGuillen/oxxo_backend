@@ -24,7 +24,7 @@ jobs:
     - name: Compilar y empaquetar Maven
       run: mvn -B package --file pom.xml
     - name: Subir .jar
-      uses: actions/upload artifact@v1
+      uses: actions/upload-artifact@v1
       with:
        name: backend
        path: target/oxxo_backend-0.0.1.jar
