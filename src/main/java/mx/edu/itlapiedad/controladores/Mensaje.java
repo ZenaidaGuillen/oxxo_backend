@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class Mensaje {
 	@GetMapping("/hola/actions")
 	public String mostrarHola(@RequestParam  String nombre) {
-		return "yoaaiiiimooo" + nombre;
+		return "Ohayo" + nombre;
 	}
 }
