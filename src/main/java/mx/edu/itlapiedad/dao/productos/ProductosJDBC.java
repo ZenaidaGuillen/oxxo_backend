@@ -22,7 +22,7 @@ public class ProductosJDBC implements ProductosDAO{
 	
 	@Override
 	public List<Productos> consultarProductos() {
-		String sql_query="SELECT* FROM productos";
+		String sql_query="SELECT* FROM productos WHERE activo=1";
 		return conexion.query(sql_query, new RowMapper<Productos>() {
 
 			@Override
