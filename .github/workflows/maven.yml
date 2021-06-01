@@ -1,7 +1,9 @@
 # This workflow will build a Java project with Maven
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
+
 name: Devops ITLP
+
 
 on:
   push:
@@ -11,9 +13,9 @@ on:
 
 jobs:
   build:
-
+  
     runs-on: ubuntu-latest
-
+    
     steps:
     - uses: actions/checkout@v2
     - name: Configurar JDK 8
@@ -28,3 +30,4 @@ jobs:
       with:
        name: backend
        path: target/oxxo_backend-0.0.1.jar
+

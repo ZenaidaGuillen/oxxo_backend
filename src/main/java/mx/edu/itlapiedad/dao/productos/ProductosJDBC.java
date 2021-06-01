@@ -22,7 +22,7 @@ public class ProductosJDBC implements ProductosDAO{
 	
 	@Override
 	public List<Productos> consultarProductos() {
-		String sql_query="SELECT* FROM productos";
+		String sql_query="SELECT* FROM productos WHERE activo=1";
 		return conexion.query(sql_query, new RowMapper<Productos>() {
 
 			@Override
@@ -42,7 +42,7 @@ public class ProductosJDBC implements ProductosDAO{
 
 	@Override
 	public Productos buscar(int id) {
-		String sql_query = "SELECT * FROM productos WHERE id = ?";
+		String sql_query = "SELECT * FROM productos WHERE id = ? AND activo = 1";
 		return conexion.queryForObject(sql_query, new RowMapper<Productos>() {
 			public Productos mapRow(ResultSet rs, int rowNum) throws SQLException{
 				Productos producto = new Productos();
@@ -82,6 +82,7 @@ public class ProductosJDBC implements ProductosDAO{
 				productos.getExistencia(),
 				productos.getId());
 	}
+	
 	@Override
 	public void eliminarProductos(int id) {
 		String sql_update="UPDATE productos SET activo=0 WHERE id=?";
