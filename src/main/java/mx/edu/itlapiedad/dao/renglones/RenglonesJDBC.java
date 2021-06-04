@@ -7,13 +7,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import mx.edu.itlapiedad.models.Renglones;
+
 
 @Repository
 public class RenglonesJDBC implements RenglonesDAO {
@@ -45,7 +46,7 @@ public class RenglonesJDBC implements RenglonesDAO {
 
 	@Override
 	public Renglones buscar(int id) {
-		String sql_query = "SELECT * FROM ticket_renglones WHERE id = ?";
+		String sql_query = "SELECT * FROM ticket_renglones WHERE id = ? AND activo = 1";
 		return conexion.queryForObject(sql_query, new RowMapper<Renglones>() {
 
 			@Override
@@ -102,5 +103,27 @@ public class RenglonesJDBC implements RenglonesDAO {
 		conexion.update(sql_update, renglones.getTicket_id(), renglones.getProducto_id(), renglones.getCantidad(), renglones.getPrecio(), renglones.getId());
 		
 	}
+	/*
+	 * String sql_query = "SELECT c.id, c.nombre, importe FROM ticket_renglones tr JOIN"
+				+ "tickets t ON tr.TICKET_id = t.id"
+				+ "INNER JOIN cajeros c ON c.id=t.CAJERO_id"
+				+ "WHERE  c.id=?";
+	 * 
+	 */
 
+	/*@Override
+	public Importes buscarImporteporCajero(int id) {
+		String sql_query = "SELECT  c.id, c.nombre, importe FROM ticket_renglones tr JOIN tickets t ON tr.TICKET_id = t.id INNER JOIN cajeros c ON c.id=t.CAJERO_id WHERE  c.id=?";
+		return conexion.queryForObject(sql_query, new RowMapper<Importes>() {
+			@Override
+			public Importes mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Importes importes = new Importes();
+					importes.setImporte(importe);(rs.getFloat("importe"));
+				return importes;		
+			}
+			
+		}, id);
+	
+		
+}*/
 }

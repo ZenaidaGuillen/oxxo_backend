@@ -11,5 +11,6 @@ public interface RenglonesDAO {
 	Renglones insertarRenglones(Renglones productos);
 	void eliminarRenglones(int id);
 	void actualizarRenglones(Renglones renglones);
+	
 
 }

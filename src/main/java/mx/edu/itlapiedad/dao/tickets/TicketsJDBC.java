@@ -44,7 +44,7 @@ public class TicketsJDBC implements TicketsDAO {
 
 	@Override
 	public Tickets buscar(int id) {
-		String sql_query = "SELECT * FROM tickets WHERE id = ?";
+		String sql_query = "SELECT * FROM tickets WHERE id = ? AND activo = 1";
 		return conexion.queryForObject(sql_query, new RowMapper<Tickets>() {
 			public Tickets mapRow(ResultSet rs, int rowNum) throws SQLException{
 				Tickets ticket = new Tickets();

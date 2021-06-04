@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mx.edu.itlapiedad.dao.renglones.RenglonesDAO;
+import mx.edu.itlapiedad.models.Importes;
 import mx.edu.itlapiedad.models.Renglones;
 
 @Service
@@ -42,4 +43,7 @@ public class RenglonesLogic implements RenglonesService{
 		
 	}
 
+
+
+	
 }
