@@ -11,5 +11,5 @@ import mx.edu.itlapiedad.models.Importes;
 public interface ImportesService {
 
 
-	List<Importes> consultarImporte(int id);
+	List<Importes> consultarImportes(int id);
 }

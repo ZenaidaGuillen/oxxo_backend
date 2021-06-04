@@ -102,11 +102,11 @@ public class RenglonesWS {
 	
 	
 	@GetMapping("cajeros/{id}/importe")
-	public ResponseEntity<?> consultarImporte(@PathVariable int id){
+	public ResponseEntity<?> consultarImportes(@PathVariable int id){
 		List<Importes> resultado1;
 		
 		try {
-			resultado1 = servicio1.consultarImporte(id);
+			resultado1 = servicio1.consultarImportes(id);
 		} catch(DataAccessException e) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}

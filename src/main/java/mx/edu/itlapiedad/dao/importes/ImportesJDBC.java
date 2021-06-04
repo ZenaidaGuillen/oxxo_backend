@@ -21,7 +21,7 @@ public class ImportesJDBC implements ImportesDAO {
 	
 
 	@Override
-	public List<Importes> consultarImporte(int id) {
+	public List<Importes> consultarImportes(int id) {
 		String sql_query = "SELECT  c.id, c.nombre, importe FROM ticket_renglones tr JOIN tickets t ON tr.TICKET_id = t.id INNER JOIN cajeros c ON c.id=t.CAJERO_id WHERE  c.id=?";
 		return conexion.query(sql_query, new RowMapper<Importes>() {
 

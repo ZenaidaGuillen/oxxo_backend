@@ -16,9 +16,9 @@ public class ImportesLogic implements ImportesService{
 	ImportesDAO repositorio;
 
 	@Override
-	public List<Importes> consultarImporte(int id) {
+	public List<Importes> consultarImportes(int id) {
 		// TODO Auto-generated method stub
-		return repositorio.consultarImporte(id);
+		return repositorio.consultarImportes(id);
 	}
 	
 

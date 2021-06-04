@@ -8,6 +8,6 @@ public interface ImportesDAO  {
 
 	
 
-	List<Importes> consultarImporte(int id);
+	List<Importes> consultarImportes(int id);
 
 }
