@@ -2,7 +2,7 @@ package mx.edu.itlapiedad.controladores;
 
 import java.util.List;
 
-import org.apache.catalina.connector.Response;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import mx.edu.itlapiedad.models.Importes;
 import mx.edu.itlapiedad.models.Renglones;
+import mx.edu.itlapiedad.services.importes.ImportesService;
 import mx.edu.itlapiedad.services.renglones.RenglonesService;
 
 @RestController
@@ -94,5 +96,21 @@ public class RenglonesWS {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
+	@Autowired
+	ImportesService servicio1;
+	
+	
+	
+	@GetMapping("cajeros/{id}/importe")
+	public ResponseEntity<?> consultarImporte(@PathVariable int id){
+		List<Importes> resultado1;
+		
+		try {
+			resultado1 = servicio1.consultarImporte(id);
+		} catch(DataAccessException e) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<Importes>>(resultado1, HttpStatus.OK); 
+	}
 
 }
