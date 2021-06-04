@@ -46,7 +46,7 @@ public class RenglonesJDBC implements RenglonesDAO {
 
 	@Override
 	public Renglones buscar(int id) {
-		String sql_query = "SELECT * FROM ticket_renglones WHERE id = ?";
+		String sql_query = "SELECT * FROM ticket_renglones WHERE id = ? AND activo = 1";
 		return conexion.queryForObject(sql_query, new RowMapper<Renglones>() {
 
 			@Override
