@@ -22,7 +22,7 @@ public class ImportesJDBC implements ImportesDAO {
 
 	@Override
 	public List<Importes> consultarImportes(int id) {
-		String sql_query = "SELECT  c.id, c.nombre, importe FROM ticket_renglones tr JOIN tickets t ON tr.TICKET_id = t.id INNER JOIN cajeros c ON c.id=t.CAJERO_id WHERE  c.id=?";
+		String sql_query = "SELECT  c.id, c.nombre, SUM(importe) AS total_importe FROM ticket_renglones tr JOIN tickets t ON tr.TICKET_id = t.id INNER JOIN cajeros c ON c.id=t.CAJERO_id WHERE  c.id=?";
 		return conexion.query(sql_query, new RowMapper<Importes>() {
 
 			@Override
@@ -30,7 +30,7 @@ public class ImportesJDBC implements ImportesDAO {
 				Importes importes = new Importes();
 				importes.setCajero_id(rs.getInt("c.id"));
 				importes.setCajero_nombre(rs.getString("c.nombre"));
-				importes.setImporte(rs.getFloat("importe"));
+				importes.setImporte(rs.getFloat("total_importe"));
 				return importes;	
 			}
 			

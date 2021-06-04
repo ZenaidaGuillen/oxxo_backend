@@ -108,6 +108,7 @@ public class RenglonesWS {
 		try {
 			resultado1 = servicio1.consultarImportes(id);
 		} catch(DataAccessException e) {
+			System.out.println(e);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<List<Importes>>(resultado1, HttpStatus.OK); 
