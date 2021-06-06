@@ -1,5 +1,7 @@
 package mx.edu.itlapiedad.services.importes;
 
+
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +18,9 @@ public class ImportesLogic implements ImportesService{
 	ImportesDAO repositorio;
 
 	@Override
-	public List<Importes> consultarImportes(int id) {
+	public List<Importes> consultarImportes(int id, Timestamp fecha_horai, Timestamp fecha_horaf) {
 		// TODO Auto-generated method stub
-		return repositorio.consultarImportes(id);
+		return repositorio.consultarImportes(id, fecha_horai, fecha_horaf);
 	}
 	
 

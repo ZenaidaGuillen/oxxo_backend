@@ -1,5 +1,7 @@
 package mx.edu.itlapiedad.controladores;
 
+
+import java.sql.Timestamp;
 import java.util.List;
 
 
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import mx.edu.itlapiedad.models.Importes;
@@ -99,19 +102,18 @@ public class RenglonesWS {
 	@Autowired
 	ImportesService servicio1;
 	
-	
-	
 	@GetMapping("cajeros/{id}/importe")
-	public ResponseEntity<?> consultarImportes(@PathVariable int id){
+	public ResponseEntity<?> consultarImportes(@PathVariable int id, @RequestParam Timestamp fecha_horai, Timestamp fecha_horaf){
 		List<Importes> resultado1;
 		
 		try {
-			resultado1 = servicio1.consultarImportes(id);
-		} catch(DataAccessException e) {
-			System.out.println(e);
+			resultado1 = servicio1.consultarImportes(id, fecha_horai, fecha_horaf);
+			
+		}catch(DataAccessException e) {
+			System.out.print(e);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<List<Importes>>(resultado1, HttpStatus.OK); 
+		return new ResponseEntity<List<Importes>>(resultado1,HttpStatus.OK);
 	}
 
 }
