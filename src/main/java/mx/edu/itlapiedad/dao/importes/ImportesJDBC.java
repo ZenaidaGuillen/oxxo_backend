@@ -24,7 +24,7 @@ public class ImportesJDBC implements ImportesDAO {
 
 	@Override
 	public List<Importes> consultarImportes(int id, Timestamp fecha_horai, Timestamp fecha_horaf) {
-		String sql_query = "SELECT  c.id, c.nombre, SUM (importe) AS total_importe FROM ticket_renglones tr JOIN tickets t ON tr.TICKET_id = t.id INNER JOIN cajeros c ON c.id=t.CAJERO_id WHERE  c.id=? AND t.fecha_hora BETWEEN ? AND ?";
+		String sql_query = "SELECT  c.id, c.nombre, SUM(importe) AS total_importe FROM ticket_renglones tr JOIN tickets t ON tr.TICKET_id = t.id INNER JOIN cajeros c ON c.id=t.CAJERO_id WHERE  c.id=? AND t.fecha_hora BETWEEN ? AND ?";
 		return conexion.query(sql_query, new RowMapper<Importes>() {
 
 			@Override
